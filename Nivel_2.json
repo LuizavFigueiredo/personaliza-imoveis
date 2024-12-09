@@ -1,0 +1,190 @@
+{
+  "name": "Nivel 2",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4a4064f3-2172-41dd-944d-7da467a45b63",
+              "name": "",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "0f51ec1f-ce8a-49b3-bab7-2b5e1834b1f3",
+              "name": "body.urgency",
+              "value": "={{ $json.body.urgency }}",
+              "type": "string"
+            },
+            {
+              "id": "c978dbb2-e6d0-45d4-af39-46c599575f47",
+              "name": "body.budget",
+              "value": "={{ $json.body.budget }}",
+              "type": "string"
+            },
+            {
+              "id": "3a46b5c1-2ba4-418b-873c-c5fb680a0b78",
+              "name": "body.name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "37eac752-ed28-479c-aa4a-47671b74167a",
+              "name": "body.email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "d00c2ac8-416c-4a6f-a1ac-b3efbeb07c1f",
+              "name": "body.location",
+              "value": "={{ $json.body.location }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f5eafdc8-b48f-4f7b-b870-e1be187cdf93",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "luizakikicampos@gmail.com",
+        "subject": "Novo Lead Urgente!",
+        "message": "=<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Qualificação de Lead</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f4f4f4;\n            padding: 20px;\n            color: #333;\n        }\n        h2 {\n            color: #007BFF;\n            text-align: center;\n        }\n        label {\n            font-size: 14px;\n            margin-bottom: 8px;\n            display: block;\n        }\n        input, select, button {\n            padding: 10px;\n            margin-bottom: 12px;\n            width: 100%;\n            border-radius: 4px;\n            border: 1px solid #ccc;\n        }\n        button {\n            background-color: #28a745;\n            color: white;\n            border: none;\n            cursor: pointer;\n        }\n        button:hover {\n            background-color: #218838;\n        }\n        .info {\n            font-size: 16px;\n            margin-bottom: 20px;\n        }\n        .info p {\n            margin: 5px 0;\n        }\n        .thank-you {\n            font-size: 18px;\n            color: #555;\n            font-style: italic;\n            text-align: center;\n        }\n        .important-message {\n            font-size: 16px;\n            color: #ff6f61;\n            font-weight: bold;\n            text-align: center;\n            margin-top: 20px;\n        }\n    </style>\n</head>\n<body>\n    <h2>Informações do Lead Qualificado</h2>\n    \n    <!-- Exibição das informações do cliente -->\n    <div class=\"info\">\n        <p><strong>Nome do Cliente:</strong> {{ $json.body.name }}</p>\n        <p><strong>E-mail do Cliente:</strong> {{ $json.body.email }}</p>\n        <p><strong>Orçamento Disponível:</strong> R$ {{ $json.body.budget }}</p>\n        <p><strong>Local de Interesse:</strong> {{ $json.body.location }}</p>\n        <p><strong>Urgência:</strong> {{ $json.body.urgency }}</p>\n    </div>\n\n    <hr>\n\n    <h3>Detalhes da Solicitação</h3>\n    <ul>\n        <li><strong>Nome do Cliente:</strong> {{ $json.body.name }}</li>\n        <li><strong>E-mail do Cliente:</strong> {{ $json.body.email }}</li>\n        <li><strong>Orçamento Disponível:</strong> R$ {{ $json.body.budget }}</li>\n        <li><strong>Local de Interesse:</strong> {{ $json.body.location }}</li>\n        <li><strong>Urgência:</strong> {{ $json.body.urgency }}</li>\n    </ul>\n\n    \n    <div class=\"important-message\">\n        <p><strong>Urgente! O cliente {{ $json.body.name }} está com alta urgência para adquirir um imóvel.</strong></p>\n        <p>Este é um lead com grande potencial, por favor, entre em contato com ele o mais rápido possível para não perder esta oportunidade de venda!</p>\n    </div>\n\n    <!-- Botão para enviar e-mail ao corretor com informações do cliente -->\n    <button onclick=\"window.location.href='mailto:corretor@email.com?subject=Urgente: Lead de {{ $json.body.name }}&body=Olá Corretor,\\\\n\\\\nO cliente {{ $json.body.name }} entrou em contato e está com urgência para adquirir um imóvel. Aqui estão os detalhes:\\\\n\\\\nNome: {{ $json.body.name }}\\\\nE-mail: {{ $json.body.email }}\\\\nOrçamento: R$ {{ $json.body.budget }}\\\\nLocal de Interesse: {{ $json.body.location }}\\\\nUrgência: {{ $json.body.urgency }}\\\\n\\\\nPor favor, entre em contato o mais rápido possível para aproveitar essa oportunidade de venda!'\">Entrar em contato com o comprador</button>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "7913dec2-f6df-403c-a2f2-cbba7974a836",
+      "name": "Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        840,
+        260
+      ],
+      "webhookId": "ee943b77-2ca2-4cf9-a84b-bad19a0a4836",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "erRXYiFe6a3nzUxL",
+          "name": "Gmail account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "30076ea8-6381-444a-b9e3-502ede01460d",
+              "leftValue": "={{ $json.body.urgency }}",
+              "rightValue": "=Imediata",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "0237940b-9ea8-4b74-bfc4-53ce2963c730",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "id": "0a0a9240-2010-4ddb-83ae-7ba57a8251a2",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "qualificar-lead",
+        "options": {}
+      },
+      "id": "83800124-f3b8-4ee1-8752-e2c2bde723a0",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        360,
+        260
+      ],
+      "webhookId": "2fc20160-fe0e-437e-aa8d-4159e88f0c78"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "48c755c8-f303-45bd-916d-50dca8a72e81",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e32b59d4e878e6d9a903c15c3d0674396d872d366e8e8e93fe23c32d93068eed"
+  },
+  "id": "i8gOO8NSN4Lx7iNE",
+  "tags": []
+}

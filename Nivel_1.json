@@ -1,0 +1,228 @@
+{
+  "name": "Nivel 1",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1QX7i7PdAbQTQgxE_rFjxbt1ENM_86bRxQKxwmjBIPp4",
+          "mode": "list",
+          "cachedResultName": "planilha de dados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QX7i7PdAbQTQgxE_rFjxbt1ENM_86bRxQKxwmjBIPp4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QX7i7PdAbQTQgxE_rFjxbt1ENM_86bRxQKxwmjBIPp4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Orçamento": "={{ $json.body.budget }}",
+            "Nome": "={{ $json.body.name }}",
+            "E-mail": "={{ $json.body.email }}",
+            "Tipo de Imóvel": "={{ $json.body.type }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "E-mail",
+              "displayName": "E-mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Tipo de Imóvel",
+              "displayName": "Tipo de Imóvel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Orçamento",
+              "displayName": "Orçamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "headers",
+              "displayName": "headers",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "params",
+              "displayName": "params",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "body",
+              "displayName": "body",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "webhookUrl",
+              "displayName": "webhookUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "executionMode",
+              "displayName": "executionMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "87a8881b-fc16-4a84-83e5-087259b33b20",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        420,
+        200
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nWIFHU0nEkknF3zZ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json['E-mail'] }}",
+        "subject": "Novo Interesse de {{$json[\"nome\"]}}",
+        "message": "=<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Mensagem de Agradecimento</title>\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            background-color: #f4f6f9;\n            margin: 0;\n            padding: 0;\n            color: #333;\n        }\n\n        .email-container {\n            background-color: #ffffff;\n            max-width: 650px;\n            margin: 30px auto;\n            padding: 30px;\n            border-radius: 10px;\n            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n            text-align: center;\n        }\n\n        .header {\n            font-size: 28px;\n            font-weight: bold;\n            color: #4CAF50;\n            margin-bottom: 20px;\n        }\n\n        .content {\n            font-size: 18px;\n            line-height: 1.6;\n            color: #555;\n            margin-bottom: 20px;\n        }\n\n        .highlight {\n            font-weight: bold;\n            color: #4CAF50;\n        }\n\n        .cta-button {\n            display: inline-block;\n            padding: 12px 25px;\n            background-color: #4CAF50;\n            color: white;\n            text-decoration: none;\n            font-size: 16px;\n            border-radius: 30px;\n            font-weight: bold;\n            margin-top: 20px;\n            transition: background-color 0.3s;\n        }\n\n        .cta-button:hover {\n            background-color: #45a049;\n        }\n\n        .footer {\n            font-size: 14px;\n            color: #888;\n            margin-top: 30px;\n        }\n\n        .footer em {\n            font-style: italic;\n            color: #555;\n        }\n\n        .emoji {\n            font-size: 22px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"header\">\n            <h1>Olá {{ $json.Nome }}! 🌟</h1>\n        </div>\n        <div class=\"content\">\n            <p>Que alegria receber o seu interesse em <span class=\"highlight\">{{ $json['Tipo de Imóvel'] }}</span>! 💚</p>\n            <p>Estamos super empolgados para te ajudar a encontrar o imóvel dos seus sonhos! 😍 Nosso time está preparando tudo com muito carinho e logo, logo, vamos te enviar todos os detalhes para dar o próximo passo.</p>\n            <p>Enquanto isso, se surgir alguma dúvida ou se você quiser conversar mais sobre suas opções, estamos à disposição! É só nos chamar a qualquer momento. 😉</p>\n            <a href=\"mailto:contato@imobiliaria.com\" class=\"cta-button\">Fale com a gente!</a>\n        </div>\n        <div class=\"footer\">\n            <p>Estamos aqui para ajudar você a fazer a melhor escolha para o seu futuro! 🏡</p>\n            <p><strong>Seu Agente Imobiliário Automatizado</strong></p>\n            <p><em>Imobiliária XYZ - Transformando sonhos em realidade, todos os dias.</em></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {
+          "replyTo": ""
+        }
+      },
+      "id": "c43ccad0-9394-40fe-bc21-6a9dbac3a9fd",
+      "name": "Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        560,
+        200
+      ],
+      "webhookId": "374153e1-b823-450d-8d2a-8595f04f0544",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "erRXYiFe6a3nzUxL",
+          "name": "Gmail account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "786570b7-5c31-4080-9263-a7d144f4a262",
+        "options": {}
+      },
+      "id": "dd18009e-96d3-4e81-9a92-cba6378ef6bc",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        200
+      ],
+      "webhookId": "786570b7-5c31-4080-9263-a7d144f4a262"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2b316661-1466-4b89-ac36-5444cebe8df9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e32b59d4e878e6d9a903c15c3d0674396d872d366e8e8e93fe23c32d93068eed"
+  },
+  "id": "24wmRAGdbeqDCtc6",
+  "tags": []
+}
